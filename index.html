@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Rush IT Route Editor</title>
+
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=geometry"></script>
+	<script src="js/jquery-2.1.4.js" type="text/javascript"></script>
+	<script src="js/jsxcompressor.min.js" type="text/javascript"></script>
+	<script src="js/routes.js" type="text/javascript"></script>
+	<script src="js/stops.js" type="text/javascript"></script>
+	<script src="js/polylines.js" type="text/javascript"></script>
+	<script src="js/init_functions.js" type="text/javascript"></script>
+	<script src="js/common_functions.js" type="text/javascript"></script>
+	<script src="js/server_functions.js" type="text/javascript"></script>
+	<script src="js/events.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+	<input type="file" id="csv" accept=".csv" style="display: none">
+	<div id="god_container">
+		<div id="loader_container">
+			<div id="loader"></div>
+		</div>
+		<div id="map_controls">
+			<table style="width: 100%">
+				<tr>
+					<td class="map_controls_td">
+						<div class="left_item">Map Type:</div>
+					</td>
+					<td class="map_controls_td">
+						<div class="right_item_2"><label><input type="radio" name="map_type" value="0">Road Map</label></div>
+						<br>
+						<div class="right_item_2"><label><input type="radio" name="map_type" value="1" checked>Terrain</label></div>
+						<br>
+						<div class="right_item_2"><label><input type="radio" name="map_type" value="2">Satellite</label></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="map_controls_td">
+						<div class="left_item">Auto Pan:</div>
+					</td>
+					<td class="map_controls_td">
+						<div class="right_item_2"><input type="checkbox" id="auto_pan" checked></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="map_controls_td">
+						<div class="left_item">Auto Zoom:</div>
+					</td>
+					<td class="map_controls_td">
+						<div class="right_item_2"><input type="checkbox" id="auto_zoom" checked></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="map"></div>
+		<div id="controls_container">
+			<table id="controls_layout" style="width:100%">
+				<tr>
+					<td>
+						<label for="mot_list" class="left_item">Select MOT</label>
+					</td>
+					<td>
+						<select id="mot_list" class="right_item">
+							<option value="0">MOT List</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="routes_row">
+					<td colspan="2">
+						<label for="mot_routes_container" class="left_item">Routes</label>
+						<div id="add_route" class="add_button"></div>
+						<div id="mot_routes_container" class="fill_item" tabindex="-1"></div>
+					</td>
+				</tr>
+				<tr id="route_direction_row">
+					<td>
+						<label for="route_direction" class="left_item">Route Direction</label>
+					</td>
+					<td>
+						<select id="route_direction" class="right_item">
+							<option value="0">Forward</option>
+							<option value="1">Backward</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="stop_action_row">
+					<td>
+						<label>
+							<input type="radio" name="stop_action" value="0" class="radio_button" checked>Markers
+						</label>
+					</td>
+					<td>
+						<label>
+							<input type="radio" name="stop_action" value="1" class="radio_button">Polylines
+						</label>
+					</td>
+				</tr>
+				<tr id="route_stops_row">
+					<td colspan="2">
+						<label for="route_stops_container" class="left_item">Stops</label>
+						<div id="add_stop" class="add_button"></div>
+						<div id="route_stops_container" class="fill_item" tabindex="-1"></div>
+					</td>
+				</tr>
+				<tr id="route_polylines_row">
+					<td colspan="2">
+						<label for="route_stops_container" class="left_item">Polylines</label>
+						<div id="route_polylines_container" class="fill_item" tabindex="-1"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

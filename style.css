@@ -1,0 +1,508 @@
+/*
+    Dark_1:  #1D1D1D;
+    Dark_2:  #222222;
+    Dark_3:  #444444;
+    Light_1: #EEEEEE;
+    Light_2: #DDDDDD;
+*/
+
+@font-face {
+    font-family: Neris_Black;
+    src: url(fonts/neris-black.woff);
+}
+
+@font-face {
+    font-family: Neris_Light;
+    src: url(fonts/neris-light.woff);
+}
+
+@font-face {
+    font-family: Neris_Semi_Bold;
+    src: url(fonts/neris-semibold.woff);
+}
+
+@font-face {
+    font-family: Neris_Thin;
+    src: url(fonts/neris-thin.woff);
+}
+
+@font-face {
+    font-family: Resagnicto;
+    src: url(fonts/resagnicto.woff);
+}
+
+@font-face {
+    font-family: Resagnicto_Bold;
+    src: url(fonts/resagnictobold.woff);
+}
+
+@font-face {
+    font-family: Resagnicto_Italic;
+    src: url(fonts/resagnictoitalic.woff);
+}
+
+@font-face {
+    font-family: Harting;
+    src: url(fonts/harting_plain.woff);
+}
+
+body {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+td {
+    padding-bottom: 15px;
+}
+
+.map_controls_td {
+    padding-bottom: 0;
+}
+
+select {
+    cursor: pointer;
+}
+
+#god_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #1D1D1D;
+}
+
+#map {
+    position: absolute;
+    border: 1px solid #EEEEEE;
+    background-color: #222222;
+}
+
+#loader_container {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    z-index: 100;
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 50%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,1)), color-stop(30%,rgba(217,217,255,1)), color-stop(50%,rgba(255,255,255,0)));
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0) 50%);
+    background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0) 50%);
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0) 50%);
+    background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D9D9FF', endColorstr='#00FFFFFF', GradientType=1 );
+    -webkit-border-radius: 64px;
+    -moz-border-radius: 64px;
+    border-radius: 64px;
+}
+
+#loader {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 64px;
+    height: 64px;
+    background: url("images/loader.gif") no-repeat;
+    background-size: 100% 100%;
+}
+
+#controls_container {
+    position: absolute;
+    padding: 15px;
+    color: #DDDDDD;
+    font-family: Harting;
+    font-size: 19px;
+    background-color: #222222;
+    overflow: hidden;
+}
+
+#map_controls {
+    position: absolute;
+    top: 30px;
+    width: 240px;
+    height: auto;
+    padding: 15px;
+    color: #DDDDDD;
+    font-family: Harting;
+    font-size: 19px;
+    background-color: #444444;
+    border: #444444 1px solid;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.add_button {
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    margin-left: 3px;
+    background: url("images/add.png") no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.add_button:hover {
+    background: url("images/add_hover.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.left_item {
+    float: left;
+    width: auto !important;
+    padding-top: 1px;
+}
+
+.fill_item {
+    float: right;
+    width: 100% !important;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    color: #DDDDDD;
+    background-color: #444444;
+}
+
+.right_item {
+    float: right;
+    width: auto !important;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    color: #DDDDDD;
+    background-color: #444444;
+}
+
+.right_item_2 {
+    display: inline-block;
+    width: auto !important;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    color: #DDDDDD;
+    background-color: #444444;
+}
+
+#mot_routes_container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    border: 1px solid #C8C8C8;
+    background-color: #444444;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#route_stops {
+    position: relative;
+    width: 100%;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    color: #DDDDDD;
+    background-color: #444444;
+}
+
+.adverb {
+    font-style: italic;
+    color: #FFFFFF;
+}
+
+.adverb_no_italic {
+    float: left;
+    width: 30px;
+    color: #FFFFFF;
+}
+
+.adverb_italic {
+    float: left;
+    font-style: italic;
+    width: 30px;
+    color: #FFFFFF;
+}
+
+.noun_with_width {
+    float: left;
+    width: 150px;
+    color: #DDDDDD;
+    overflow: hidden;
+}
+
+.option_container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#route_stops_container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    border: 1px solid #C8C8C8;
+    background-color: #444444;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#route_polylines_container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    border: 1px solid #C8C8C8;
+    background-color: #444444;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.controls {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: 20px;
+    float: right;
+}
+
+.edit_button {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 2px;
+    background: url("images/edit.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.delete_button {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 2px;
+    background: url("images/delete.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.reversed_button {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 2px;
+    background: url("images/reversed.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.edit_button:hover {
+    background: url("images/edit_hover.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.delete_button:hover {
+    background: url("images/delete_hover.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.reversed_button:hover {
+    background: url("images/reversed_hover.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.dialog_container {
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    color: #DDDDDD;
+    font-family: Neris_Light;
+    font-size: 20px;
+    background-color: #222222;
+    border: #444444 1px solid;
+    -webkit-box-shadow: -1px 11px 38px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 11px 38px -7px rgba(0,0,0,0.75);
+    box-shadow: -1px 11px 38px -7px rgba(0,0,0,0.75);
+    overflow: hidden;
+}
+
+.header_container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #AAAAAA;
+    text-align: center;
+}
+
+.table_container {
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+}
+
+.controls_container {
+    margin-top: 15px;
+}
+
+#controls {
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 24px;
+    padding-top: 2px;
+    color: #DDDDDD;
+    background-color: #444444;
+    border: 1px solid #EEEEEE;
+    text-align: center;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: #EEEEEE;
+    background-color: #555555;
+}
+
+#save_button {
+    margin-right: 15px;
+}
+
+#import_button {
+    margin-right: 15px;
+}
+
+#yes_button {
+    margin-right: 15px;
+}
+
+.textbox {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 10px;
+    padding: 5px;
+    font-family: Neris_Thin;
+    font-size: 15px;
+    font-weight: bold;
+    color: #222222;
+    background-color: #DDDDDD;
+    border: 1px solid #EEEEEE;
+}
+
+.textbox:focus {
+    background-color: #EEEEEE;
+    border: 1px solid #EEEEEE;
+}
+
+.checkbox {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #222222;
+    background-color: #DDDDDD;
+}
+
+.checkbox:focus {
+    background-color: #EEEEEE;
+    border: 1px solid #EEEEEE;
+}
+
+.minus_button {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    background: url("images/minus.png") no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.minus_button:hover {
+    background: url("images/minus_hover.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.confirm_delete_header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-family: Neris_Light;
+    font-size: 28px;
+    color: #AAAAAA;
+    text-align: center;
+}
+
+#message_box {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.confirm_delete_right_item {
+    position: relative;
+    float: right;
+    font-family: Neris_Thin;
+    font-size: 20px;
+    color: #DDDDDD;
+}
+
+.line {
+    position: relative;
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+.line_number {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: auto;
+    font-family: Neris_Light;
+    font-size: 24px;
+    color: #EEEEEE;
+}
+
+.line_position {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    font-family: Neris_Light;
+    font-size: 24px;
+    color: #AAAAAA;
+}
+
+.line_text {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    font-family: Neris_Thin;
+    font-size: 18px;
+    color: #AAAAAA;
+}
+
